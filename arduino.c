@@ -53,16 +53,16 @@ void loop() {
     int pirState = digitalRead(pirPin);
     int ldrValue = analogRead(ldrPin);
     
+    // Normaliza o valor do LDR para uma escala de 0 a 100
+    float entradaAnalogica = (ldrValue / 4095.0) * 100.0;
+
     // Ativa o buzzer se o PIR detectar movimento
     if (pirState == HIGH) {
-      tone(buzzerPin, 262, 250); // Toca um tom de 262Hz por 250ms
+      tone(buzzerPin, 160, 1000); // Toca um tom de 160Hz por 1s
     }
 
     Serial.print("LDR Value: ");
     Serial.println(ldrValue);
-    Serial.print("Normalized LDR Value (entrada_analogica): ");
-    float entradaAnalogica = (ldrValue / 4095.0) * 100.0;
-    Serial.println(entradaAnalogica, 1);
     Serial.print("PIR State: ");
     Serial.println(pirState);
 
