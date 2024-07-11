@@ -1,5 +1,4 @@
 //Código que detecta o movimento com sensor PIR no arduino e o nível de luminosidade! Sendo que quando quando têm a presença de alguem no local, ele faz um alarme sonoro tocar!
-
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
@@ -53,12 +52,10 @@ void loop() {
 
     int pirState = digitalRead(pirPin);
     int ldrValue = analogRead(ldrPin);
-
+    
     // Ativa o buzzer se o PIR detectar movimento
     if (pirState == HIGH) {
-      digitalWrite(buzzerPin, HIGH);
-      delay(1000); // Buzzer soa por 1 segundo
-      digitalWrite(buzzerPin, LOW);
+      tone(buzzerPin, 262, 250); // Toca um tom de 262Hz por 250ms
     }
 
     Serial.print("LDR Value: ");
